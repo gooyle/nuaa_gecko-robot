@@ -13,35 +13,13 @@ int main(void)
 {
 	int inc = 0;
 	RCC_Config();
-	PWMConfig(200-1,8400-1);//84MHZ/(8400*200) = 50HZ
-	TIM_Cmd(TIM2, ENABLE);
-	TIM_Cmd(TIM3, ENABLE);
-	TIM_Cmd(TIM4, ENABLE);
+	PWMConfig(10000-1,168-1);//84MHZ/(10000*168) = 50HZ
+	PWM_Enable();
 	
-	while(1)
+	//while(1)
 	{
-		if(inc <= 150)
-		{
-			inc++;
-			TIM_SetCompare1(TIM2,inc);
-			TIM_SetCompare2(TIM2,inc);
-			TIM_SetCompare3(TIM2,inc);
-			TIM_SetCompare4(TIM2,inc);
-			
-			TIM_SetCompare1(TIM3,inc);
-			TIM_SetCompare2(TIM3,inc);
-			TIM_SetCompare3(TIM3,inc);
-			TIM_SetCompare4(TIM3,inc);
-			
-			TIM_SetCompare1(TIM4,inc);
-			TIM_SetCompare2(TIM4,inc);
-			TIM_SetCompare3(TIM4,inc);
-			TIM_SetCompare4(TIM4 ,inc);
-		}
-		else inc =0;
-		
-
+		Angle(0,LF_J1);
 	}
-	//while(1);
+	while(1);
 	return 0;
 }

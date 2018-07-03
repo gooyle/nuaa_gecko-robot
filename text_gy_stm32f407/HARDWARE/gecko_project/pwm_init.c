@@ -121,3 +121,84 @@ void PWMConfig(uint32_t arr,uint32_t psc)
 
 	//TIM_Cmd(TIM3, ENABLE);  //TIM3时钟总使能
 }  
+
+/********************************************************************************************************
+*date：2018-7-3
+*author：NUAA google
+*function:pwm enable configuration
+*input:none
+*output:none
+*remarks：使能TIM2-4(pwm),调用函数TIM_Cmd
+********************************************************************************************************/
+void PWM_Enable(void)
+{
+	TIM_Cmd(TIM2,ENABLE);
+	TIM_Cmd(TIM3,ENABLE);
+	TIM_Cmd(TIM4,ENABLE);
+}
+
+/********************************************************************************************************
+*date：2018-7-3
+*author：NUAA google
+*function:tranfer angle to arr numerical value
+*input:angle:[-90,90],footnumber: //LF_J1 LR_J1 RF_J1 RR_J1
+*																  //LF_J2 LR_J2 RF_J2 RR_J2
+*                                 //LF_J3 LR_J3 RF_J3 RR_J3
+*output:ArrValue
+*remarks：转换角度变为占空比数值
+********************************************************************************************************/
+void Angle(int32_t angle,int8_t footnumber)
+{
+	int32_t ArrValue = 0;
+	//ArrValue = 250 + (int32_t) (angle *0.18);
+	ArrValue = angle * 5 + 750;
+	//ArrValue = (int32_t) (angle * 5.56 + 750)	;
+	if(footnumber == LF_J1)
+	{
+		TIM_SetCompare1(TIM2,ArrValue);
+	}
+	else if(footnumber == LR_J1)
+	{
+		TIM_SetCompare2(TIM2,ArrValue);
+	}
+		else if(footnumber == RF_J1)
+	{
+		TIM_SetCompare3(TIM2,ArrValue);
+	}
+		else if(footnumber == RR_J1)
+	{
+		TIM_SetCompare4(TIM2,ArrValue);
+	}
+		else if(footnumber == LF_J2)
+	{
+		TIM_SetCompare1(TIM3,ArrValue);
+	}
+		else if(footnumber == LR_J2)
+	{
+		TIM_SetCompare2(TIM3,ArrValue);
+	}
+		else if(footnumber == RF_J2)
+	{
+		TIM_SetCompare3(TIM3,ArrValue);
+	}
+		else if(footnumber == RR_J2)
+	{
+		TIM_SetCompare4(TIM3,ArrValue);
+	}
+		else if(footnumber == LF_J3)
+	{
+		TIM_SetCompare1(TIM4,ArrValue);
+	}
+		else if(footnumber == LR_J3)
+	{
+		TIM_SetCompare2(TIM4,ArrValue);
+	}
+		else if(footnumber == RF_J3)
+	{
+		TIM_SetCompare3(TIM4,ArrValue);
+	}
+		else if(footnumber == RR_J3)
+	{
+		TIM_SetCompare4(TIM4,ArrValue);
+	}
+}
