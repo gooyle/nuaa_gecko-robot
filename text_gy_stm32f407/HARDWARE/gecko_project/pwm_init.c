@@ -16,15 +16,15 @@ void PWMConfig(uint32_t arr,uint32_t psc)
 	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef  TIM_OCInitStructure;
 	/*------------------------------打开对应时钟----------------------------*/
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2|
-													RCC_APB1Periph_TIM3|RCC_APB1Periph_TIM4,ENABLE);  
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2|RCC_APB1Periph_TIM3|
+													RCC_APB1Periph_TIM4|RCC_APB1Periph_TIM5,ENABLE);  
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA|RCC_AHB1Periph_GPIOB|
 													RCC_AHB1Periph_GPIOC|RCC_AHB1Periph_GPIOD, ENABLE); 
 	/*-----------------------------------------------------------------------*
-	*@LF_J1_T2CH1:PA15 @LR_J1_T2CH2:PB3  @RF_J1_T2CH3:PB10 @RR_J1_T2CH4:PB11
-	*@LF_J2_T3CH1:PC6  @LR_J2_T3CH2:PC7  @RF_J2_T3CH3:PB0  @RR_J2_T3CH4:PB1
-	*@LF_J3_T4CH1:PD12 @LR_J3_T4CH2:PD13 @RF_J3_T4CH3:PD14 @RR_J3_T4CH4:PD15
-	*
+	*@LF_J1-T2CH1:PA15 @LR_J1-T2CH2:PB3  @RF_J1-T2CH3:PB10 @RR_J1-T2CH4:PB11
+	*@LF_J2-T3CH1:PC6  @LR_J2-T3CH2:PC7  @RF_J2-T3CH3:PB0  @RR_J2-T3CH4:PB1
+	*@LF_J3-T4CH1:PD12 @LR_J3-T4CH2:PD13 @RF_J3-T4CH3:PD14 @RR_J3-T4CH4:PD15
+	*@ARM_J1-T5CH1:PA0 @ARM_J2-T5CH2:PA1 @ARM_J3-T5CH3:PA2 @WAIST-T5CH4:PA3
 	*------------------------------------------------------------------------*/
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource15, GPIO_AF_TIM2);//TIM2复用配置
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource3, GPIO_AF_TIM2);//TIM2复用配置
@@ -41,8 +41,13 @@ void PWMConfig(uint32_t arr,uint32_t psc)
 	GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);//TIM4复用配置
 	GPIO_PinAFConfig(GPIOD, GPIO_PinSource15, GPIO_AF_TIM4);//TIM4复用配置
 	
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource0, GPIO_AF_TIM5);//TIM5复用配置
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource1, GPIO_AF_TIM5);//TIM5复用配置
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_TIM5);//TIM5复用配置
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_TIM5);//TIM5复用配置
 	/**-------------------------GPIOA配置---------------------------**/
-	GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_15;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2
+																|GPIO_Pin_3|GPIO_Pin_15;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;       
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;      
@@ -76,48 +81,64 @@ void PWMConfig(uint32_t arr,uint32_t psc)
 	/*-----------------------------TIM4基本配置------------------------------*/
 	TIM_TimeBaseInit(TIM4,&TIM_TimeBaseStructure);
 	
+		/*-----------------------------TIM5基本配置------------------------------*/
+	TIM_TimeBaseInit(TIM5,&TIM_TimeBaseStructure);
+	
 	/*-------------------------------PWM配置--------------------------------------*/
 	
 	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; 
 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; 
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 	
-	/*---------------------TIM2-4 通道1 预装载值配置--------------------------------*/
+	/*---------------------TIM2-5 通道1 预装载值配置--------------------------------*/
 	TIM_OC1Init(TIM2, &TIM_OCInitStructure);
 	TIM_OC1Init(TIM3, &TIM_OCInitStructure);
 	TIM_OC1Init(TIM4, &TIM_OCInitStructure);
+	TIM_OC1Init(TIM5, &TIM_OCInitStructure);
+
 	TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Enable);
 	TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
 	TIM_OC1PreloadConfig(TIM4, TIM_OCPreload_Enable);
+	TIM_OC1PreloadConfig(TIM5, TIM_OCPreload_Enable);
 
-	/*---------------------TIM2-4 通道2 预装载值配置--------------------------------*/
+	/*---------------------TIM2-5 通道2 预装载值配置--------------------------------*/
 	TIM_OC2Init(TIM2, &TIM_OCInitStructure);
 	TIM_OC2Init(TIM3, &TIM_OCInitStructure);
 	TIM_OC2Init(TIM4, &TIM_OCInitStructure);
+	TIM_OC2Init(TIM5, &TIM_OCInitStructure);
+	
 	TIM_OC2PreloadConfig(TIM2, TIM_OCPreload_Enable);
 	TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
 	TIM_OC2PreloadConfig(TIM4, TIM_OCPreload_Enable);
-	
-	/*---------------------TIM2-4 通道3 预装载值配置--------------------------------*/
+	TIM_OC2PreloadConfig(TIM5, TIM_OCPreload_Enable);
+
+	/*---------------------TIM2-5 通道3 预装载值配置--------------------------------*/
 	TIM_OC3Init(TIM2, &TIM_OCInitStructure);
 	TIM_OC3Init(TIM3, &TIM_OCInitStructure);
 	TIM_OC3Init(TIM4, &TIM_OCInitStructure);
+	TIM_OC3Init(TIM5, &TIM_OCInitStructure);
+	
 	TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
 	TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);
 	TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable);  
+	TIM_OC3PreloadConfig(TIM5, TIM_OCPreload_Enable);  
 	
-	/*---------------------TIM2-4 通道4 预装载值配置--------------------------------*/
+	/*---------------------TIM2-5 通道4 预装载值配置--------------------------------*/
 	TIM_OC4Init(TIM2, &TIM_OCInitStructure);
 	TIM_OC4Init(TIM3, &TIM_OCInitStructure);
 	TIM_OC4Init(TIM4, &TIM_OCInitStructure);
+	TIM_OC4Init(TIM5, &TIM_OCInitStructure);
+	
 	TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
 	TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable);
 	TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable);  
+	TIM_OC4PreloadConfig(TIM5, TIM_OCPreload_Enable);  
 	
 	/*----------------TIM2-4 计数最大值使能配置-------------------------------------*/
 	TIM_ARRPreloadConfig(TIM2, ENABLE);
 	TIM_ARRPreloadConfig(TIM3, ENABLE);
 	TIM_ARRPreloadConfig(TIM4, ENABLE);
+	TIM_ARRPreloadConfig(TIM5, ENABLE);
 
 	//TIM_Cmd(TIM3, ENABLE);  //TIM3时钟总使能
 }  
@@ -128,13 +149,15 @@ void PWMConfig(uint32_t arr,uint32_t psc)
 *function:pwm enable configuration
 *input:none
 *output:none
-*remarks：使能TIM2-4(pwm),调用函数TIM_Cmd
+*remarks：使能TIM2-5(pwm),调用函数TIM_Cmd
 ********************************************************************************************************/
 void PWM_Enable(void)
 {
 	TIM_Cmd(TIM2,ENABLE);
 	TIM_Cmd(TIM3,ENABLE);
 	TIM_Cmd(TIM4,ENABLE);
+	TIM_Cmd(TIM5,ENABLE);
+	
 }
 
 /********************************************************************************************************
@@ -144,6 +167,7 @@ void PWM_Enable(void)
 *input:angle:[-90,90],footnumber: //LF_J1 LR_J1 RF_J1 RR_J1
 *																  //LF_J2 LR_J2 RF_J2 RR_J2
 *                                 //LF_J3 LR_J3 RF_J3 RR_J3
+*                                 //ARM_J1 ARM_J2 ARM_J3 WAIST
 *output:ArrValue
 *remarks：转换角度变为占空比数值
 ********************************************************************************************************/
@@ -157,7 +181,7 @@ void Angle(int32_t angle,int8_t footnumber)
 	{
 		TIM_SetCompare1(TIM2,ArrValue);
 	}
-	else if(footnumber == LR_J1)
+		else if(footnumber == LR_J1)
 	{
 		TIM_SetCompare2(TIM2,ArrValue);
 	}
@@ -200,5 +224,21 @@ void Angle(int32_t angle,int8_t footnumber)
 		else if(footnumber == RR_J3)
 	{
 		TIM_SetCompare4(TIM4,ArrValue);
+	}
+		else if(footnumber == ARM_J1)
+	{
+		TIM_SetCompare1(TIM5,ArrValue);
+	}
+		else if(footnumber == ARM_J2)
+	{
+		TIM_SetCompare2(TIM5,ArrValue);
+	}
+		else if(footnumber == ARM_J3)
+	{
+		TIM_SetCompare3(TIM5,ArrValue);
+	}
+		else if(footnumber == WAIST)
+	{
+		TIM_SetCompare4(TIM5,ArrValue);
 	}
 }

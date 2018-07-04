@@ -19,6 +19,7 @@ int main(void)
 	//while(1)
 	{
 		Angle(0,LF_J1);
+		Angle(0,WAIST);
 	}
 	while(1);
 	return 0;

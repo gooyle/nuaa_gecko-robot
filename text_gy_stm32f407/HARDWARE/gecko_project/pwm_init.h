@@ -16,4 +16,8 @@ void Angle(int32_t angle,int8_t footnumber);
 #define LR_J3 9
 #define RF_J3 10
 #define RR_J3 11
+#define ARM_J1 12
+#define ARM_J2 13
+#define ARM_J3 14
+#define WAIST  15 
 #endif
