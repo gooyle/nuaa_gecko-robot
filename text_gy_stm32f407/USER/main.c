@@ -18,8 +18,8 @@ int main(void)
 	
 	//while(1)
 	{
-		Angle(0,LF_J1);
-		Angle(0,ARM_J1);
+		//Angle(0,LF_J1);
+		Angle(0,ARM_J2);
 	}
 	while(1);
 	return 0;
