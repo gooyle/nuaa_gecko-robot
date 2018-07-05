@@ -171,7 +171,7 @@ void PWM_Enable(void)
 *output:ArrValue
 *remarks：转换角度变为占空比数值
 ********************************************************************************************************/
-void Angle(int32_t angle,int8_t footnumber)
+ void Angle(int32_t angle,int8_t footnumber)
 {
 	int32_t ArrValue = 0;
 	//ArrValue = 250 + (int32_t) (angle *0.18);
