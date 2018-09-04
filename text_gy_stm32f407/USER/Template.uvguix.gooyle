@@ -2633,7 +2633,7 @@
       </Doc>
       <Doc>
         <Name>..\HARDWARE\gecko_project\pwm_init.c</Name>
-        <ColumnNumber>60</ColumnNumber>
+        <ColumnNumber>64</ColumnNumber>
         <TopLine>39</TopLine>
         <CurrentLine>40</CurrentLine>
         <Folding>1</Folding>
@@ -2642,7 +2642,7 @@
       </Doc>
       <Doc>
         <Name>.\main.c</Name>
-        <ColumnNumber>2</ColumnNumber>
+        <ColumnNumber>37</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>23</CurrentLine>
         <Folding>1</Folding>
