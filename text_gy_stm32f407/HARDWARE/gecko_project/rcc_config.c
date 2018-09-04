@@ -22,7 +22,7 @@ void RCC_Config(void)
 		RCC_HCLKConfig(RCC_SYSCLK_Div1);    //HCLK（AHB）时钟为系统时钟1分频
 		RCC_PCLK1Config(RCC_HCLK_Div4);    //PCLK（APB1）时钟为HCLK时钟8分频
 		RCC_PCLK2Config(RCC_HCLK_Div2);    //PCLK（APB2）时钟为HCLK时钟2分频
-		RCC_PLLConfig(RCC_PLLSource_HSE,25,336,2,7);    //PLL时钟配置，外部晶振为25MHz，系统配置为168MHz
+		RCC_PLLConfig(HSE_VALUE,25,336,2,7);    //PLL时钟配置，外部晶振为25MHz，系统配置为168MHz
 		RCC_PLLCmd(ENABLE);    //PLL时钟开启
 		while(RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET);    //等待PLL时钟准备好
 			}
