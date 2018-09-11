@@ -8,7 +8,7 @@
 ********************************************************************************************************/ 
 #include "rcc_config.h"
 #include "pwm_init.h"
-#include "usart.h"
+#include "usart_gy.h"
 #include "delay.h"
 
 int main(void)
