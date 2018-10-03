@@ -23,14 +23,12 @@ int main(void)
 	
 	/***********************----Á÷³Ìº¯Êý-----***********************************/
 	
-	printf("12.99\n");
-	delay_ms(100);
 	while(1)
 	{
-		Angle(0,LF_J1);
-		//delay_ms(500);
-		//Angle(-45,LF_J1);
-		//delay_ms(2000);
+		Angle(60,LR_J1);
+		delay_ms(500);
+		Angle(-60,LR_J10);
+		delay_ms(500);
 	}
 	return 0;
 }
