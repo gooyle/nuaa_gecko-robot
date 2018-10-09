@@ -13,11 +13,6 @@ void RCC_Config(void)
 {		
 	__IO uint32_t HSEStartUpStatus = 0;
 	RCC_DeInit();    //RCC寄存器初始化
-//	GPIO_DeInit(GPIOA);
-//	GPIO_DeInit(GPIOB);
-//	GPIO_DeInit(GPIOC);
-//	GPIO_DeInit(GPIOD);
-
 	RCC_HSEConfig(RCC_HSE_ON);    //使用外部时钟
 	HSEStartUpStatus = RCC_WaitForHSEStartUp();
 	if( HSEStartUpStatus== SUCCESS )     //等待外部时钟启动

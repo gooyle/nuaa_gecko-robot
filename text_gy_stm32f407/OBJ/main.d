@@ -40,3 +40,4 @@
 ..\obj\main.o: ..\SYSTEM\usart\usart_gy.h
 ..\obj\main.o: D:\software_gy\MDK\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
+..\obj\main.o: ..\HARDWARE\gecko_project\Matrix_Inverse_solution.h

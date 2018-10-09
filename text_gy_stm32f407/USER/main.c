@@ -11,7 +11,9 @@
 #include "usart_gy.h"
 #include "delay.h"
 //#include "stdio.h"
+#include "Matrix_Inverse_solution.h"
 
+extern KinematicsArm KMGecko;
 int main(void)
 {
 	/**********************----初始化函数-------*****************************/
@@ -20,15 +22,28 @@ int main(void)
 	PWMConfig(10000-1,168-1);//84MHZ/(10000*168) = 50HZ
 	PWM_Enable();//pwm使能
 	delay_init(168);//延时函数初始化配置，系统时钟为168Mhz
+	/******--------------------矩阵解算-------------------********/
+	Inverse_Kinematic();
 	
 	/***********************----流程函数-----***********************************/
 	
 	while(1)
 	{
-		Angle(60,LR_J1);
-		delay_ms(500);
-		Angle(-60,LR_J10);
-		delay_ms(500);
+//		Angle(KMGecko.theta3[0],LF_J3);
+//		Angle(-KMGecko.theta1[0],LF_J1);
+//		Angle(KMGecko.theta2[0],LF_J2);
+		
+//		Angle(KMGecko.theta1[0],RF_J1);
+//		Angle(-KMGecko.theta2[0],RF_J2);		
+//		Angle(KMGecko.theta3[0],RF_J3);
+//		
+//		Angle(KMGecko.theta1[0],RR_J1);
+//		Angle(-KMGecko.theta2[0],RR_J2);
+//		Angle(KMGecko.theta3[0],RR_J3);
+
+		Angle(-KMGecko.theta1[0],LR_J1);
+		Angle(KMGecko.theta2[0],LR_J2);
+		Angle(KMGecko.theta3[0],LR_J3);
 	}
 	return 0;
 }

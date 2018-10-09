@@ -526,6 +526,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\gecko_project\rcc_config.c</FilePath>
             </File>
+            <File>
+              <FileName>Matrix_Inverse_Solution.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
