@@ -36,4 +36,5 @@
 ..\obj\matrix_inverse_solution.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\matrix_inverse_solution.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\matrix_inverse_solution.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\matrix_inverse_solution.o: ..\HARDWARE\gecko_project\pwm_init.h
 ..\obj\matrix_inverse_solution.o: D:\software_gy\MDK\ARM\ARMCC\Bin\..\include\math.h
