@@ -81,6 +81,22 @@ void InitRobotPosion(void)
 	KMGecko.init_y0[i] = 32;
 	for(i = 0; i<LEGNUM;i++)
 	KMGecko.init_z0[i] = -32;
+	
+	Angle(0,LF_J3);
+	Angle(0,LF_J1);
+	Angle(0,LF_J2);
+	
+	Angle(0,RF_J1);
+	Angle(0,RF_J2);		
+	Angle(0,RF_J3);
+	
+	Angle(0,RR_J1);
+	Angle(0,RR_J2);
+	Angle(0,RR_J3);
+
+	Angle(0,LR_J1);
+	Angle(0,LR_J2);
+	Angle(0,LR_J3);
 }
 
 /********************************************************************************************************

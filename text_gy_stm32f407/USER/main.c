@@ -46,21 +46,12 @@ int main(void)
 	Inverse_Kinematic(LegLF);
 	Inverse_Kinematic(LegRR);
 	Inverse_Kinematic(LegLR);	
+	delay_ms(1000);
 	/***********************----流程函数-----***********************************/
 	
 	while(1)
 	{
-//		for(j = 0; j<(4*STEPNUM); j++)
-//		{
-//			for(i = 0; i<LEGNUM; i++)
-//				{
-//					Angle(KMGecko.theta1[i][j],i);
-//					Angle(KMGecko.theta2[i][j],i+4);
-//					Angle(KMGecko.theta3[i][j],i+8);
-//				} 
-//				delay_ms(15);
-//			}
-		
+		/**-----------正式运行程序-----------**/
 		for(j = 0; j<(4*STEPNUM); j++)	
 		{
 			Angle(KMGecko.theta3[1][j],LF_J3);
@@ -78,9 +69,10 @@ int main(void)
 			Angle(-KMGecko.theta1[3][j],LR_J1);
 			Angle(KMGecko.theta2[3][j],LR_J2);
 			Angle(-KMGecko.theta3[3][j],LR_J3);
-			delay_ms(25);
-			//printf("%d\r\n",j);
+			delay_ms(15);
 		}
+
+
 	}
 	return 0;
 }

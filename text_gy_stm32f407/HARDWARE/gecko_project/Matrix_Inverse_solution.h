@@ -15,7 +15,7 @@
 #define CYCLE3rd 2
 #define CYCLE4th 3
 #define WIDTH 30
-#define HIGHTS 20
+#define HIGHTS 35
 #define JonintNum 12
 #define LEGNUM 4
 #define LegRF 0
