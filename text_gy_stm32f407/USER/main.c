@@ -47,42 +47,7 @@ int main(void)
 	Inverse_Kinematic(LegRR);
 	Inverse_Kinematic(LegLR);	
 	/***********************----Á÷³Ìº¯Êý-----***********************************/
-	
-//	while(1)
-//	{
-////		for(j = 0; j<(4*STEPNUM); j++)
-////		{
-////			for(i = 0; i<LEGNUM; i++)
-////				{
-////					Angle(KMGecko.theta1[i][j],i);
-////					Angle(KMGecko.theta2[i][j],i+4);
-////					Angle(KMGecko.theta3[i][j],i+8);
-////				} 
-////				delay_ms(15);
-////			}
-//		
-//		for(j = 0; j<(4*STEPNUM); j++)	
-//		{
-//			Angle(KMGecko.theta3[1][j],LF_J3);
-//			Angle(-KMGecko.theta1[1][j],LF_J1);
-//			Angle(KMGecko.theta2[1][j],LF_J2);
-//			
-//			Angle(KMGecko.theta1[0][j],RF_J1);
-//			Angle(-KMGecko.theta2[0][j],RF_J2);		
-//			Angle(-KMGecko.theta3[0][j],RF_J3);
-//			
-//			Angle(KMGecko.theta1[2][j],RR_J1);
-//			Angle(-KMGecko.theta2[2][j],RR_J2);
-//			Angle(KMGecko.theta3[2][j],RR_J3);
-
-//			Angle(-KMGecko.theta1[3][j],LR_J1);
-//			Angle(KMGecko.theta2[3][j],LR_J2);
-//			Angle(-KMGecko.theta3[3][j],LR_J3);
-//			delay_ms(25);
-//			//printf("%d\r\n",j);
-//		}
-//	}
-/*******DCMotorTest********/
+									/*******DCMotorTest********/
 
 	return 0;
 }
