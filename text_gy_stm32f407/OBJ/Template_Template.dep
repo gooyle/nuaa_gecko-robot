@@ -72,7 +72,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x53DBAFAD)
-F (.\main.c)(0x5BC024E6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\FWLIB\inc -I..\HARDWARE\self-learning\EXTI -I..\HARDWARE\self-learning\keyboard -I..\HARDWARE\self-learning\LED -I..\HARDWARE\self-learning\PWM14 -I..\HARDWARE\self-learning\time -I..\FWLIB\src -I..\HARDWARE\gecko_project-I C:\Users\gooyle\Desktop\nuaa_gecko-robot\text_gy_stm32f407\USER\RTE-I D:\software_gy\MDK\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I D:\software_gy\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5C32C4B7)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\FWLIB\inc -I..\HARDWARE\self-learning\EXTI -I..\HARDWARE\self-learning\keyboard -I..\HARDWARE\self-learning\LED -I..\HARDWARE\self-learning\PWM14 -I..\HARDWARE\self-learning\time -I..\FWLIB\src -I..\HARDWARE\gecko_project-I C:\Users\gooyle\Desktop\nuaa_gecko-robot\text_gy_stm32f407\USER\RTE-I D:\software_gy\MDK\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I D:\software_gy\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\HARDWARE\gecko_project\rcc_config.h)(0x5B2CFE3D)
 I (..\HARDWARE\gecko_project\pwm_init.h)(0x5BBE1E8F)
 I (..\SYSTEM\sys\sys.h)(0x55CC1471)
