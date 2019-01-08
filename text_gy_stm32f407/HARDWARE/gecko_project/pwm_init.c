@@ -86,7 +86,7 @@ void PWMConfig(uint32_t arr,uint32_t psc)
 	
 	/*-------------------------------PWM≈‰÷√--------------------------------------*/
 	
-	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; 
+	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2; 
 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; 
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 	

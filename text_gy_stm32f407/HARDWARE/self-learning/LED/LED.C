@@ -8,7 +8,7 @@
 ********************************************************************************************************/ 
 #include "led.h"
 
-void LED_Init(void)
+void MotorPin_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF,ENABLE);
@@ -18,8 +18,6 @@ void LED_Init(void)
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
 	GPIO_Init(GPIOF,&GPIO_InitStructure);
-	//初始化，一开始将f9和f10置为1
-	//GPIO_SetBits(GPIOF,GPIO_Pin_9|GPIO_Pin_10);
-	LED0 = 1;
-	LED1 = 1;
+	//初始化，一开始将f9和f10置为0
+	GPIO_ResetBits(GPIOF,GPIO_Pin_9|GPIO_Pin_10);
 }

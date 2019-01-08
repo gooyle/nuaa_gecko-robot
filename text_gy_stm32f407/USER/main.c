@@ -23,31 +23,37 @@
 ********************************************************************************************************/ 
 #include "rcc_config.h"
 #include "pwm_init.h"
-#include "usart_gy.h"
+#include "usart.h"
 #include "delay.h"
 #include "stdio.h"
-#include "Matrix_Inverse_solution.h"
+#include "led.h"
+#include "DCMotorControl.h"
 
-extern KinematicsArm KMGecko;
 int main(void)
 {
-	int i = 0;
+	float i = 0;
 	int j = 0;
 	/**********************----初始化函数-------*****************************/
 	RCC_Config();//程序第一步：时钟树配置
 	uart_init(115200);//波特率配置；
-	PWMConfig(10000-1,168-1);//84MHZ/(10000*168) = 50HZ
+	MotorPin_Init();
+	PWMConfig(50-1,168-1);//84MHZ/(25*168) = 2000HZ
 	PWM_Enable();//pwm使能
 	delay_init(168);//延时函数初始化配置，系统时钟为168Mhz
-	/******--------------------矩阵解算-------------------********/
-	InitRobotPosion();//robot位置初始化
-	FullStepCycle();//generate  px py pz Array	
-	Inverse_Kinematic(LegRF);
-	Inverse_Kinematic(LegLF);
-	Inverse_Kinematic(LegRR);
-	Inverse_Kinematic(LegLR);	
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
 	/***********************----流程函数-----***********************************/
 									/*******DCMotorTest********/
+	while(1)
+	{
+		DCMotorControl(3,PDIR,ENABLE);
+		delay_ms(1000);
+		DCMotorControl(3,PDIR,DISABLE);
+		delay_ms(800);
+		DCMotorControl(3,NDIR,ENABLE);
+		delay_ms(1000);
+		DCMotorControl(3,PDIR,DISABLE);
+		delay_ms(800);
 
+	}
 	return 0;
 }
