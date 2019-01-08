@@ -532,14 +532,14 @@
               <FilePath>..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c</FilePath>
             </File>
             <File>
-              <FileName>LED.C</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\self-learning\LED\LED.C</FilePath>
-            </File>
-            <File>
               <FileName>DCMotorControl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\DCMotorControl.c</FilePath>
+              <FilePath>..\HARDWARE\gecko_project\DCMotorControl.c</FilePath>
+            </File>
+            <File>
+              <FileName>DCMotorInit.C</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\gecko_project\DCMotorInit.C</FilePath>
             </File>
           </Files>
         </Group>

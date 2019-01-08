@@ -29,8 +29,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
- 
-
+#include "DCMotorInit.h"
+extern StepperMotor TTMotor;//声明TTMotor
 /** @addtogroup Template_Project
   * @{
   */
@@ -163,6 +163,30 @@ void SysTick_Handler(void)
 /**
   * @}
   */ 
-
+/********************************************************************************************************
+*date：2019-1-8
+*author：NUAA gooyle
+*function:void TIM2_IRQHandler()
+*input:none
+*output:none
+*remarks：中断函数，timer2更新中断
+**********************************************************************************************/ 
+void TIM2_IRQHandler(void)
+{
+	if(TIM_GetITStatus(TIM2,TIM_IT_Update) != RESET)
+	{
+		if(TTMotor.PluseNumber == 0)
+		{
+			TIM_CCxCmd(TIM2,TIM_Channel_1, TIM_CCx_Disable);
+			GPIO_ResetBits(GPIOF,GPIO_Pin_9);
+			TTMotor.PluseFinished = 1;
+		}
+		else if(TTMotor.PluseNumber > 0)
+		{
+			TTMotor.PluseNumber--;
+		}
+	}
+	TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
+}
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

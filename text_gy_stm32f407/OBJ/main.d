@@ -40,5 +40,5 @@
 ..\obj\main.o: ..\SYSTEM\usart\usart.h
 ..\obj\main.o: D:\software_gy\MDK\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
-..\obj\main.o: ..\HARDWARE\self-learning\LED\led.h
-..\obj\main.o: DCMotorControl.h
+..\obj\main.o: ..\HARDWARE\gecko_project\DCMotorInit.h
+..\obj\main.o: ..\HARDWARE\gecko_project\DCMotorControl.h

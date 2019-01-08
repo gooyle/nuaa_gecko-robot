@@ -1,5 +1,5 @@
-..\obj\dcmotorcontrol.o: DCMotorControl.c
-..\obj\dcmotorcontrol.o: DCMotorControl.h
+..\obj\dcmotorcontrol.o: ..\HARDWARE\gecko_project\DCMotorControl.c
+..\obj\dcmotorcontrol.o: ..\HARDWARE\gecko_project\DCMotorControl.h
 ..\obj\dcmotorcontrol.o: ..\SYSTEM\sys\sys.h
 ..\obj\dcmotorcontrol.o: ..\USER\stm32f4xx.h
 ..\obj\dcmotorcontrol.o: ..\CORE\core_cm4.h
@@ -36,4 +36,4 @@
 ..\obj\dcmotorcontrol.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\dcmotorcontrol.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\dcmotorcontrol.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
-..\obj\dcmotorcontrol.o: ..\HARDWARE\self-learning\LED\led.h
+..\obj\dcmotorcontrol.o: ..\HARDWARE\gecko_project\DCMotorInit.h

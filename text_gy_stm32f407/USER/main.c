@@ -26,7 +26,7 @@
 #include "usart.h"
 #include "delay.h"
 #include "stdio.h"
-#include "led.h"
+#include "DCMotorInit.h"
 #include "DCMotorControl.h"
 
 int main(void)
@@ -36,24 +36,20 @@ int main(void)
 	/**********************----初始化函数-------*****************************/
 	RCC_Config();//程序第一步：时钟树配置
 	uart_init(115200);//波特率配置；
-	MotorPin_Init();
-	PWMConfig(50-1,168-1);//84MHZ/(25*168) = 2000HZ
-	PWM_Enable();//pwm使能
+	PWMConfig(PWMCOUNT-1,168-1);//84MHZ/(50*168) = 1000HZ
 	delay_init(168);//延时函数初始化配置，系统时钟为168Mhz
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
+	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
+	TTMotorState_Init();
+	StepperMotor_Init();
+	TIM_SetCompare1(TIM2, HALFPWMCOUNT);
+	TIM_Cmd(TIM2,DISABLE);//使能Timer2,此步流程在控制函数中失能
+	delay_ms(10);
+	TIM_Cmd(TIM2,ENABLE);//使能Timer2,此步流程在控制函数中使能
 	/***********************----流程函数-----***********************************/
 									/*******DCMotorTest********/
 	while(1)
 	{
-		DCMotorControl(3,PDIR,ENABLE);
-		delay_ms(1000);
-		DCMotorControl(3,PDIR,DISABLE);
-		delay_ms(800);
-		DCMotorControl(3,NDIR,ENABLE);
-		delay_ms(1000);
-		DCMotorControl(3,PDIR,DISABLE);
-		delay_ms(800);
-
+		StepperMotorControl(20,PDIR,ENABLE);
 	}
 	return 0;
 }

@@ -16,8 +16,8 @@
 "..\obj\pwm_init.o"
 "..\obj\rcc_config.o"
 "..\obj\matrix_inverse_solution.o"
-"..\obj\led.o"
 "..\obj\dcmotorcontrol.o"
+"..\obj\dcmotorinit.o"
 --strict --scatter "..\OBJ\Template.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

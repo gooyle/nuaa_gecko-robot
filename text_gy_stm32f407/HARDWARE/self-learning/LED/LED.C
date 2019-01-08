@@ -6,9 +6,9 @@
 *output:none
 *remarks£∫GPIO…œ¿≠ ‰≥ˆ≈‰÷√
 ********************************************************************************************************/ 
-#include "led.h"
+#include "DCMotorInit.h"
 
-void MotorPin_Init(void)
+void DCMotorPin_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF,ENABLE);
