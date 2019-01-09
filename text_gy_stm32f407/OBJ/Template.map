@@ -14,7 +14,7 @@ Section Cross References
     main.o(.text) refers to pwm_init.o(.text) for PWMConfig
     main.o(.text) refers to delay.o(.text) for delay_init
     main.o(.text) refers to dcmotorinit.o(.text) for TTMotorState_Init
-    main.o(.text) refers to stm32f4xx_tim.o(.text) for TIM_SetCompare1
+    main.o(.text) refers to stm32f4xx_tim.o(.text) for TIM_Cmd
     startup_stm32f40_41xxx.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_stm32f40_41xxx.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_stm32f40_41xxx.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
