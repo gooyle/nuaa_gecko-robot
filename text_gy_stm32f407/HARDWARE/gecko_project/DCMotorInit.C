@@ -52,17 +52,17 @@ void StepperMotor_Init(void)
 	//初始化，一开始将f9和f10置为0
 	GPIO_ResetBits(GPIOF,GPIO_Pin_9|GPIO_Pin_10);
 		     
-//	/* 设置 NVIC 参数 */
-//	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
-//	NVIC_InitStructure.NVIC_IRQChannel=TIM2_IRQn; //打开 TIM2_IRQn 的全局中断
-//	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0;//抢占优先级为 0
-//	NVIC_InitStructure.NVIC_IRQChannelSubPriority=1; //响应优先级为 1
-//	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; //使能
-//	NVIC_Init(&NVIC_InitStructure);
+	/* 设置 NVIC 参数 */
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+	NVIC_InitStructure.NVIC_IRQChannel=TIM2_IRQn; //打开 TIM2_IRQn 的全局中断
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0;//抢占优先级为 0
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority=1; //响应优先级为 1
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; //使能
+	NVIC_Init(&NVIC_InitStructure);
 	
-//	 /*开Timer2中断*/
-//	TIM_ClearFlag(TIM2, TIM_FLAG_Update);	//清除TIM2中断标志
-//	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);	//使能TIM2更新中断
+	 /*开Timer2中断*/
+	TIM_ClearFlag(TIM2, TIM_FLAG_Update);	//清除TIM2中断标志
+	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);	//使能TIM2更新中断
 	
 
 }

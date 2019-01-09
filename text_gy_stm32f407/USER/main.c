@@ -41,19 +41,19 @@ int main(void)
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
 	TTMotorState_Init();
 	StepperMotor_Init();
-	//TIM_Cmd(TIM2,DISABLE);//使能Timer2,此步流程在控制函数中失能
-	//delay_ms(1000);
+	TIM_Cmd(TIM2,DISABLE);//使能Timer2,此步流程在控制函数中失能
+	delay_ms(1000);
 	TIM_Cmd(TIM2,ENABLE);//使能Timer2,此步流程在控制函数中使能
 	TIM_SetCompare1(TIM2, HALFPWMCOUNT);
 	/***********************----流程函数-----***********************************/
 									/*******DCMotorTest********/
 	//while(1)
-		//StepperMotorControl(200,PDIR,ENABLE);
-		while(1)
-		{
-			//TIM_SetCompare1();
-		}
-		//while(1);
-	
+		StepperMotorControl(200,PDIR,ENABLE);
+		while(1);
+//		{
+//			//TIM_SetCompare1();
+//		}
+//		//while(1);
+//	
 	return 0;
 }
