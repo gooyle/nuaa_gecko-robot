@@ -42,6 +42,7 @@ void DCMotorControl(uint16_t Mpwm,uint8_t Dir,uint8_t Enable)
 ********************************************************************************************************/ 
 void StepperMotorControl(uint32_t Pluse,uint8_t Dir,uint8_t Enable)
 {
+	printf("fuzhi");
 	if(TTMotor.PluseFinished == 1)
 	{
 		TTMotor.PluseNumber = Pluse;
@@ -55,14 +56,20 @@ void StepperMotorControl(uint32_t Pluse,uint8_t Dir,uint8_t Enable)
 			GPIO_SetBits(GPIOF,GPIO_Pin_9);
 			GPIO_SetBits(GPIOF,GPIO_Pin_10);
 			TIM_CCxCmd(TIM2,TIM_Channel_1, TIM_CCx_Enable);
+			TIM_Cmd(TIM2, ENABLE);
 			TTMotor.PluseFinished = 0;
 		}
 		else if(Dir == NDIR)
 		{
 			GPIO_SetBits(GPIOF,GPIO_Pin_9);
+			GPIO_ResetBits(GPIOF,GPIO_Pin_10);
 			TIM_CCxCmd(TIM2,TIM_Channel_1, TIM_CCx_Enable);
 			TTMotor.PluseFinished = 0;
 		}
 
+	}
+	else if(TTMotor.PluseNumber == 0)//这部分是考虑所有脉冲发送完成后，关闭时钟
+	{
+		TIM_Cmd(TIM2, DISABLE);
 	}
 }
