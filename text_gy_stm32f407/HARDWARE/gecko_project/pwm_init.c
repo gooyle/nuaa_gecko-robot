@@ -139,8 +139,12 @@ void PWMConfig(uint32_t arr,uint32_t psc)
 	TIM_ARRPreloadConfig(TIM3, ENABLE);
 	TIM_ARRPreloadConfig(TIM4, ENABLE);
 	TIM_ARRPreloadConfig(TIM5, ENABLE);
-
-	//TIM_Cmd(TIM3, ENABLE);  //TIM3时钟总使能
+	
+	/*-----这里失能timer-------*/
+	TIM_Cmd(TIM2, DISABLE);  //TIM2时钟总使能
+	TIM_Cmd(TIM3, DISABLE);  //TIM3时钟总使能
+	TIM_Cmd(TIM4, DISABLE);  //TIM4时钟总使能
+	TIM_Cmd(TIM5, DISABLE);  //TIM5时钟总使能
 }  
 
 /********************************************************************************************************

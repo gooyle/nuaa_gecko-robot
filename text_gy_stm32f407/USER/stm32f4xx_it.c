@@ -173,10 +173,8 @@ void SysTick_Handler(void)
 **********************************************************************************************/ 
 void TIM2_IRQHandler(void)
 {
-	printf("startIQR");
 	if(TIM_GetITStatus(TIM2,TIM_IT_Update) != RESET)
 	{
-		printf("enter");
 		TIM_ClearFlag(TIM2,TIM_FLAG_Update);
 		if(TTMotor.PluseNumber == 0)
 		{

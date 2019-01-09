@@ -9,6 +9,7 @@
 *					@Dir引脚———PF10
 ********************************************************************************************************/ 
 #include "DCMotorInit.h"
+#include "delay.h"
 StepperMotor TTMotor;
 
 void DCMotorPin_Init(void)
@@ -62,6 +63,7 @@ void StepperMotor_Init(void)
 	
 	 /*开Timer2中断*/
 	TIM_ClearFlag(TIM2, TIM_FLAG_Update);	//清除TIM2中断标志
+	delay_ms(1);
 	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);	//使能TIM2更新中断
 	
 

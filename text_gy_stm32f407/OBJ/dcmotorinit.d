@@ -36,3 +36,4 @@
 ..\obj\dcmotorinit.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\dcmotorinit.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\dcmotorinit.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\dcmotorinit.o: ..\SYSTEM\delay\delay.h
