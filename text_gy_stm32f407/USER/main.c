@@ -36,7 +36,7 @@ int main(void)
 	/**********************----初始化函数-------*****************************/
 	RCC_Config();//程序第一步：时钟树配置
 	uart_init(115200);//波特率配置；
-	PWMConfig(PWMCOUNT-1,168-1);//84MHZ/(500*168) = 1KHZ
+	PWMConfig(PWMCOUNT-1,168-1);//84MHZ/(1000*168) = 500HZ
 	delay_init(168);//延时函数初始化配置，系统时钟为168Mhz
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
 	TTMotorState_Init();
@@ -46,12 +46,12 @@ int main(void)
 	/***********************----流程函数-----***********************************/
 									/*******DCMotorTest********/
 	//while(1)
-		while(1)
+		//while(1)
 		{
 					StepperMotorControl(2000,PDIR,ENABLE);
 
 		}
-//		//while(1);
+		while(1);
 //	
 	return 0;
 }

@@ -708,7 +708,7 @@ Image Symbol Table
     TIM2_IRQHandler                          0x08000243   Thumb Code    76  stm32f4xx_it.o(.text)
     SystemInit                               0x08000375   Thumb Code    88  system_stm32f4xx.o(.text)
     SystemCoreClockUpdate                    0x080003cd   Thumb Code   174  system_stm32f4xx.o(.text)
-    main                                     0x080004a9   Thumb Code    64  main.o(.text)
+    main                                     0x080004a9   Thumb Code    62  main.o(.text)
     Reset_Handler                            0x080004e9   Thumb Code     8  startup_stm32f40_41xxx.o(.text)
     ADC_IRQHandler                           0x08000503   Thumb Code     0  startup_stm32f40_41xxx.o(.text)
     CAN1_RX0_IRQHandler                      0x08000503   Thumb Code     0  startup_stm32f40_41xxx.o(.text)
@@ -1086,7 +1086,8 @@ Memory Map of the image
     0x08000226   0x00000002   PAD
     0x08000228   0x00000070   Code   RO            3    .text               stm32f4xx_it.o
     0x08000298   0x00000210   Code   RO          140    .text               system_stm32f4xx.o
-    0x080004a8   0x00000040   Code   RO          166    .text               main.o
+    0x080004a8   0x0000003e   Code   RO          166    .text               main.o
+    0x080004e6   0x00000002   PAD
     0x080004e8   0x00000040   Code   RO          233    .text               startup_stm32f40_41xxx.o
     0x08000528   0x000000e0   Code   RO          239    .text               misc.o
     0x08000608   0x00000294   Code   RO          259    .text               stm32f4xx_gpio.o
@@ -1138,7 +1139,7 @@ Image component sizes
        256          8          0          0          0       1085   dcmotorcontrol.o
        200          8          0          8          0       1292   dcmotorinit.o
        260          8          0          4          0       1513   delay.o
-        64          0          0          0          0     229703   main.o
+        62          0          0          0          0     229703   main.o
        224         20          0          0          0       1849   misc.o
        972         30          0          0          0       1617   pwm_init.o
        100          0          0          0          0        977   rcc_config.o
@@ -1154,7 +1155,7 @@ Image component sizes
     ----------------------------------------------------------------------
       9744        364        424         56       1736     346724   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         2          0          0          2          0          0   (incl. Padding)
+         4          0          0          2          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
