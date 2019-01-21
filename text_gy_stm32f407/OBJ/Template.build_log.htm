@@ -22,36 +22,118 @@ Dialog DLL:      DCM.DLL V1.13.4.0
  
 <h2>Project:</h2>
 C:\Users\gooyle\Desktop\nuaa_gecko-robot\text_gy_stm32f407\USER\Template.uvprojx
-Project File Date:  01/07/2019
+Project File Date:  01/18/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'D:\software_gy\MDK\ARM\ARMCC\Bin'
-Build target 'Template'
+Rebuild target 'Template'
+assembling startup_stm32f40_41xxx.s...
+compiling system_stm32f4xx.c...
+compiling stm32f4xx_exti.c...
+compiling stm32f4xx_gpio.c...
+compiling sys.c...
+compiling stm32f4xx_it.c...
 compiling main.c...
 ..\HARDWARE\gecko_project\rcc_config.h(5): warning:  #1-D: last line of file ends without a newline
   #endif
 ..\HARDWARE\gecko_project\Matrix_Inverse_solution.h(42): warning:  #1-D: last line of file ends without a newline
   #endif
-main.c(80): warning:  #111-D: statement is unreachable
+main.c(78): warning:  #111-D: statement is unreachable
   	return 0;
-main.c(81): warning:  #1-D: last line of file ends without a newline
+main.c(79): warning:  #1-D: last line of file ends without a newline
   }
 main.c(34): warning:  #177-D: variable "i" was declared but never referenced
   	int i = 0;
 main.c(35): warning:  #177-D: variable "j" was declared but never referenced
   	int j = 0;
 main.c: 6 warnings, 0 errors
+compiling stm32f4xx_syscfg.c...
+compiling stm32f4xx_usart.c...
+compiling misc.c...
+compiling stm32f4xx_rcc.c...
+compiling stm32f4xx_tim.c...
+compiling delay.c...
+compiling rcc_config.c...
+..\HARDWARE\gecko_project\rcc_config.h(5): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\gecko_project\rcc_config.c(30): warning:  #1-D: last line of file ends without a newline
+  }
+..\HARDWARE\gecko_project\rcc_config.c: 2 warnings, 0 errors
+compiling usart_gy.c...
+..\SYSTEM\usart\usart_gy.c(100): warning:  #177-D: variable "Res" was declared but never referenced
+  	u8 Res;
+..\SYSTEM\usart\usart_gy.c(101): warning:  #177-D: variable "i" was declared but never referenced
+  	int i = 0;
+..\SYSTEM\usart\usart_gy.c: 2 warnings, 0 errors
+compiling pwm_init.c...
+compiling Matrix_Inverse_Solution.c...
+..\HARDWARE\gecko_project\Matrix_Inverse_solution.h(42): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(64): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		KMGecko.theta1[LegNum][i] = (int)((theta1/3.1415)*180);
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(65): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		KMGecko.theta2[LegNum][i] = (int)((theta2/3.1415)*180);
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(66): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		KMGecko.theta3[LegNum][i] = (int)((theta3/3.1415)*180);
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(12): warning:  #177-D: variable "a1" was declared but never referenced
+  	float a1 = 1.0;//link lengthen
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(13): warning:  #177-D: variable "a2" was declared but never referenced
+  	float a2 = 1.0;//link lengthen
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(14): warning:  #177-D: variable "a3" was declared but never referenced
+  	float a3 = 1.0;//link lengthen
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(15): warning:  #177-D: variable "a4" was declared but never referenced
+  	float a4 = 1.0;//link lengthen
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(16): warning:  #177-D: variable "a5" was declared but never referenced
+  	float a5 = 0.0;//link lengthen
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(30): warning:  #177-D: variable "r" was declared but never referenced
+  	float r =0.0; //Graphical Method variable
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(31): warning:  #177-D: variable "r1" was declared but never referenced
+  	float r1 =0.0;//Graphical Method variable
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(32): warning:  #177-D: variable "phi1" was declared but never referenced
+  	float phi1 = 0.0;//Graphical Method variable
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(33): warning:  #177-D: variable "phi2" was declared but never referenced
+  	float phi2 = 0.0;//Graphical Method variable
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(34): warning:  #177-D: variable "phi3" was declared but never referenced
+  	float phi3 = 0.0;//Graphical Method variable
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(35): warning:  #177-D: variable "phi4" was declared but never referenced
+  	float phi4 = 0.0;//Graphical Method variable
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(36): warning:  #177-D: variable "phi5" was declared but never referenced
+  	float phi5 = 0.0;//Graphical Method variable
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(37): warning:  #177-D: variable "phi6" was declared but never referenced
+  	float phi6 = 0.0;//Graphical Method variable
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(119): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				KMGecko.pz[LegNum][j] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(121): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				i = i + ((Width*1.0)/(STEPNUM-1));
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(130): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				KMGecko.pz[LegNum][j+
+TEPNUM] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(132): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				i = i + ((Width*1.0)/(STEPNUM-1));
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(141): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				KMGecko.pz[LegNum][j+2*
+TEPNUM] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(143): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				i = i + ((Width*1.0)/(STEPNUM-1));
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(152): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				KMGecko.pz[LegNum][j+3*
+TEPNUM] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(154): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				i = i + ((Width*1.0)/(STEPNUM-1));
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c(214): warning:  #1-D: last line of file ends without a newline
+  }
+..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c: 26 warnings, 0 errors
 linking...
-Program Size: Code=19264 RO-data=664 RW-data=48 ZI-data=40080  
+Program Size: Code=19080 RO-data=664 RW-data=40 ZI-data=40080  
 FromELF: creating hex file...
-"..\OBJ\Template.axf" - 0 Error(s), 6 Warning(s).
+"..\OBJ\Template.axf" - 0 Error(s), 36 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   C:\Users\gooyle\Desktop\nuaa_gecko-robot\text_gy_stm32f407\USER\RTE
   D:\software_gy\MDK\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>
