@@ -72,7 +72,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x53DBAFAD)
-F (.\main.c)(0x5C480D01)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\FWLIB\inc -I..\HARDWARE\self-learning\EXTI -I..\HARDWARE\self-learning\keyboard -I..\HARDWARE\self-learning\LED -I..\HARDWARE\self-learning\PWM14 -I..\HARDWARE\self-learning\time -I..\FWLIB\src -I..\HARDWARE\gecko_project-I C:\Users\gooyle\Desktop\nuaa_gecko-robot\text_gy_stm32f407\USER\RTE-I D:\software_gy\MDK\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I D:\software_gy\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5C48259A)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\FWLIB\inc -I..\HARDWARE\self-learning\EXTI -I..\HARDWARE\self-learning\keyboard -I..\HARDWARE\self-learning\LED -I..\HARDWARE\self-learning\PWM14 -I..\HARDWARE\self-learning\time -I..\FWLIB\src -I..\HARDWARE\gecko_project-I C:\Users\gooyle\Desktop\nuaa_gecko-robot\text_gy_stm32f407\USER\RTE-I D:\software_gy\MDK\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I D:\software_gy\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\HARDWARE\gecko_project\rcc_config.h)(0x5B2CFE3D)
 I (..\HARDWARE\gecko_project\pwm_init.h)(0x5C32FEF2)
 I (..\SYSTEM\sys\sys.h)(0x55CC1471)
@@ -113,7 +113,7 @@ I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x53DBAFAD)
 I (..\SYSTEM\usart\usart_gy.h)(0x5C334C49)
 I (D:\software_gy\MDK\ARM\ARMCC\include\stdio.h)(0x55DB2B76)
 I (..\SYSTEM\delay\delay.h)(0x53B7797C)
-I (..\HARDWARE\gecko_project\Matrix_Inverse_solution.h)(0x5C46CE2D)
+I (..\HARDWARE\gecko_project\Matrix_Inverse_solution.h)(0x5C48259C)
 F (..\CORE\startup_stm32f40_41xxx.s)(0x53DBBC53)(--cpu Cortex-M4.fp -g --apcs=interwork -I C:\Users\gooyle\Desktop\nuaa_gecko-robot\text_gy_stm32f407\USER\RTE-I D:\software_gy\MDK\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I D:\software_gy\MDK\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 517" --pd "STM32F40_41xxx SETA 1"--list ..\obj\startup_stm32f40_41xxx.lst --xref -o ..\obj\startup_stm32f40_41xxx.o --depend ..\obj\startup_stm32f40_41xxx.d)
 F (..\FWLIB\src\misc.c)(0x53DBB014)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\FWLIB\inc -I..\HARDWARE\self-learning\EXTI -I..\HARDWARE\self-learning\keyboard -I..\HARDWARE\self-learning\LED -I..\HARDWARE\self-learning\PWM14 -I..\HARDWARE\self-learning\time -I..\FWLIB\src -I..\HARDWARE\gecko_project-I C:\Users\gooyle\Desktop\nuaa_gecko-robot\text_gy_stm32f407\USER\RTE-I D:\software_gy\MDK\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I D:\software_gy\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\misc.o --omf_browse ..\obj\misc.crf --depend ..\obj\misc.d)
 I (..\FWLIB\inc\misc.h)(0x53DBAFAD)
@@ -545,8 +545,8 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x53DBAFAD)
 I (..\HARDWARE\gecko_project\rcc_config.h)(0x5B2CFE3D)
-F (..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c)(0x5C46C947)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\FWLIB\inc -I..\HARDWARE\self-learning\EXTI -I..\HARDWARE\self-learning\keyboard -I..\HARDWARE\self-learning\LED -I..\HARDWARE\self-learning\PWM14 -I..\HARDWARE\self-learning\time -I..\FWLIB\src -I..\HARDWARE\gecko_project-I C:\Users\gooyle\Desktop\nuaa_gecko-robot\text_gy_stm32f407\USER\RTE-I D:\software_gy\MDK\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I D:\software_gy\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\matrix_inverse_solution.o --omf_browse ..\obj\matrix_inverse_solution.crf --depend ..\obj\matrix_inverse_solution.d)
-I (..\HARDWARE\gecko_project\Matrix_Inverse_solution.h)(0x5C46CE2D)
+F (..\HARDWARE\gecko_project\Matrix_Inverse_Solution.c)(0x5C482598)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\CORE -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\FWLIB\inc -I..\HARDWARE\self-learning\EXTI -I..\HARDWARE\self-learning\keyboard -I..\HARDWARE\self-learning\LED -I..\HARDWARE\self-learning\PWM14 -I..\HARDWARE\self-learning\time -I..\FWLIB\src -I..\HARDWARE\gecko_project-I C:\Users\gooyle\Desktop\nuaa_gecko-robot\text_gy_stm32f407\USER\RTE-I D:\software_gy\MDK\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I D:\software_gy\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F40_41xxx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\matrix_inverse_solution.o --omf_browse ..\obj\matrix_inverse_solution.crf --depend ..\obj\matrix_inverse_solution.d)
+I (..\HARDWARE\gecko_project\Matrix_Inverse_solution.h)(0x5C48259C)
 I (..\SYSTEM\sys\sys.h)(0x55CC1471)
 I (..\USER\stm32f4xx.h)(0x5B2B1626)
 I (..\CORE\core_cm4.h)(0x53C7D530)
