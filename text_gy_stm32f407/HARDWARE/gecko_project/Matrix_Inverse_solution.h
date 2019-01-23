@@ -5,15 +5,22 @@
 
 #define GY_GRAPHICAL_METHOD 0
 #define KM_INVERSE 1
+#define PARA 1
+#define PARA_AND_LINE 1
 //#define EN_GENERATE_STEP 1
 //#define INIT_X0 65 //initial position
 //#define INIT_Y0 32 //initial position
 //#define INIT_Z0 -32 //initial position
-#define STEPNUM 100//nums of generated steps 
+#define STEPNUM1 100//nums of generated steps 
+#define STEPNUM2 100//nums of generated steps
+#define STEPNUM3 100//nums of generated steps
+#define STEPNUM4 100//nums of generated steps
 #define CYCLE1st 0
 #define CYCLE2nd 1
 #define CYCLE3rd 2
 #define CYCLE4th 3
+#define CYCLE5th 4
+#define CYCLE6th 5
 #define WIDTH 30
 #define HIGHTS 35
 #define JonintNum 12
@@ -33,10 +40,13 @@ typedef struct Kinematics
 	float px[LEGNUM][4*STEPNUM];
 	float py[LEGNUM][4*STEPNUM];
 	float pz[LEGNUM][4*STEPNUM];
+	uint32_t StartAngle[JonintNum];
+	uint32_t StepNum;//Êý¾Ý²½¾à
 }KinematicsArm;
 
 void Inverse_Kinematic(int8_t LegNum);
 void InitRobotPosion(void);
-void Position_Genarate(float Width,float Hights,int8_t CycleNum,int8_t LegNum);
+void Position_Genarate(float Width,float Hights,int8_t CycleNum,int8_t LegNum,uint32_t DateNum);
 void FullStepCycle(void);
+void StartAngleInit(void);
 #endif

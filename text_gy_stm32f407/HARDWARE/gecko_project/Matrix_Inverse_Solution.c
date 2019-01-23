@@ -36,7 +36,7 @@ void Inverse_Kinematic(int8_t LegNum)
 	float phi5 = 0.0;//Graphical Method variable
 	float phi6 = 0.0;//Graphical Method variable
 	/****************--------生成步态------------*********************/
-	for(i = 0; i< 4*STEPNUM; i++)
+	for(i = 0; i< STEPNUM1 +1; i++)
 	{
 		x0 = KMGecko.init_x0[LegNum];
 		y0 = KMGecko.py[LegNum][i];
@@ -68,9 +68,9 @@ void Inverse_Kinematic(int8_t LegNum)
 }
 
 /********************************************************************************************************
-*date：2018-10-10
-*function:Adjust Robot to initial posion and set px[],py[],pz[] as zero
-*author：NUAA google
+*date: 2018-10-10
+*function: Adjust Robot to initial posion and set px[],py[],pz[] as zero
+*author: NUAA google
 ********************************************************************************************************/ 
 void InitRobotPosion(void)
 {
@@ -82,21 +82,21 @@ void InitRobotPosion(void)
 	for(i = 0; i<LEGNUM;i++)
 	KMGecko.init_z0[i] = -32;
 	
-	Angle(0,LF_J3);
-	Angle(0,LF_J1);
-	Angle(0,LF_J2);
+	Angle(KMGecko.StartAngle[LF_J3],LF_J3);
+	Angle(KMGecko.StartAngle[LF_J1],LF_J1);
+	Angle(KMGecko.StartAngle[LF_J2],LF_J2);
 	
-	Angle(0,RF_J1);
-	Angle(0,RF_J2);		
-	Angle(0,RF_J3);
+	Angle(KMGecko.StartAngle[RF_J1],RF_J1);
+	Angle(KMGecko.StartAngle[RF_J2],RF_J2);		
+	Angle(KMGecko.StartAngle[RF_J3],RF_J3);
 	
-	Angle(0,RR_J1);
-	Angle(0,RR_J2);
-	Angle(0,RR_J3);
+	Angle(KMGecko.StartAngle[RR_J1],RR_J1);
+	Angle(KMGecko.StartAngle[RR_J2],RR_J2);
+	Angle(KMGecko.StartAngle[RR_J3],RR_J3);
 
-	Angle(0,LR_J1);
-	Angle(0,LR_J2);
-	Angle(0,LR_J3);
+	Angle(KMGecko.StartAngle[LR_J1],LR_J1);
+	Angle(KMGecko.StartAngle[LR_J2],LR_J2);
+	Angle(KMGecko.StartAngle[LR_J3],LR_J3);
 }
 
 /********************************************************************************************************
@@ -112,46 +112,63 @@ void Position_Genarate(float Width,float Hights,int8_t CycleNum,int8_t LegNum)
 	int j = 0;
 	if (CycleNum == CYCLE1st)
 	{
-			for(j = 0;j<STEPNUM;j++)
+			for(j = 0;j<STEPNUM1;j++)
 			{
 				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
 				KMGecko.py[LegNum][j] = i;
+				
+				#if PARA
 				KMGecko.pz[LegNum][j] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
 				KMGecko.py[LegNum][j] = i + KMGecko.init_y0[LegNum];
-				i = i + ((Width*1.0)/(STEPNUM-1));
+				i = i + ((Width*1.0)/(STEPNUM1-1));
+				#endif
+				#if PARA_AND_LINE
+				if(Width > 0)
+					if((KMGecko.py[LegNum][j] <= (int)(Width/2)))
+					{
+						KMGecko.pz[LegNum][j] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+						KMGecko.py[LegNum][j] = i + KMGecko.init_y0[LegNum];
+						i = i + ((Width*1.0)/(STEPNUM1-1))/2;
+					}
+					if(KMGecko.py[LegNum][j] > (int)(Width/2))
+					{
+						
+					}
+					else 
+				#endif
 			}	
 	}
 		if (CycleNum == CYCLE2nd)
 	{
-			for(j = 0;j<STEPNUM;j++)
+			for(j = 0;j<DateNum;j++)
 			{
 				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
-				KMGecko.py[LegNum][j+STEPNUM] = i;
-				KMGecko.pz[LegNum][j+STEPNUM] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
-				KMGecko.py[LegNum][j+STEPNUM] = i + KMGecko.init_y0[LegNum];
-				i = i + ((Width*1.0)/(STEPNUM-1));
+				KMGecko.py[LegNum][j+DateNum] = i;
+				KMGecko.pz[LegNum][j+DateNum] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+DateNum] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DateNum-1));
 			}	
 	}
 		if (CycleNum == CYCLE3rd)
 	{
-			for(j = 0;j<STEPNUM;j++)
+			for(j = 0;j<DateNum;j++)
 			{
 				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
-				KMGecko.py[LegNum][j+2*STEPNUM] = i;
-				KMGecko.pz[LegNum][j+2*STEPNUM] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
-				KMGecko.py[LegNum][j+2*STEPNUM] = i + KMGecko.init_y0[LegNum];
-				i = i + ((Width*1.0)/(STEPNUM-1));
+				KMGecko.py[LegNum][j+2*DateNum] = i;
+				KMGecko.pz[LegNum][j+2*DateNum] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+2*DateNum] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DateNum-1));
 			}	
 	}
 		if (CycleNum == CYCLE4th)
 	{
-				for(j = 0;j<STEPNUM;j++)
+				for(j = 0;j<DateNum;j++)
 			{
 				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
-				KMGecko.py[LegNum][j+3*STEPNUM] = i;
-				KMGecko.pz[LegNum][j+3*STEPNUM] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
-				KMGecko.py[LegNum][j+3*STEPNUM] = i + KMGecko.init_y0[LegNum];
-				i = i + ((Width*1.0)/(STEPNUM-1));
+				KMGecko.py[LegNum][j+3*DateNum] = i;
+				KMGecko.pz[LegNum][j+3*DateNum] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+3*DateNum] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DateNum-1));
 			}	
 		}
 	}
@@ -211,4 +228,20 @@ void FullStepCycle(void)
 	KMGecko.init_y0[LegLR] = KMGecko.py[LegLR][4*STEPNUM - 1];
 	KMGecko.init_y0[LegRR] = KMGecko.py[LegRR][4*STEPNUM - 1];	
 
+}
+/**初始位置矫零*/
+void StartAngleInit(void)
+{
+	KMGecko.StartAngle[RF_J1] = 0;
+	KMGecko.StartAngle[LF_J1] = 0;
+	KMGecko.StartAngle[RR_J1] = 0;
+	KMGecko.StartAngle[LR_J1] = 0;
+	KMGecko.StartAngle[RF_J2] = 0;
+	KMGecko.StartAngle[LF_J2] = 0;
+	KMGecko.StartAngle[RR_J2] = 0;
+	KMGecko.StartAngle[LR_J2] = 0;
+	KMGecko.StartAngle[RF_J3] = 0;
+	KMGecko.StartAngle[LF_J3] = 0;
+	KMGecko.StartAngle[RR_J3] = 0;
+	KMGecko.StartAngle[LR_J3] = 0;
 }
