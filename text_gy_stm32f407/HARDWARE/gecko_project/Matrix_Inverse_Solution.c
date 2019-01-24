@@ -36,7 +36,7 @@ void Inverse_Kinematic(int8_t LegNum)
 	float phi5 = 0.0;//Graphical Method variable
 	float phi6 = 0.0;//Graphical Method variable
 	/****************--------生成步态------------*********************/
-	for(i = 0; i< STEPNUM1 +1; i++)
+	for(i = 0; i< STEPNUM +1; i++)
 	{
 		x0 = KMGecko.init_x0[LegNum];
 		y0 = KMGecko.py[LegNum][i];
@@ -106,72 +106,71 @@ void InitRobotPosion(void)
 *output:single 
 *author：NUAA google
 ********************************************************************************************************/
-void Position_Genarate(float Width,float Hights,int8_t CycleNum,int8_t LegNum)
-{
-	float i = 0;
-	int j = 0;
-	if (CycleNum == CYCLE1st)
-	{
-			for(j = 0;j<STEPNUM1;j++)
-			{
-				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
-				KMGecko.py[LegNum][j] = i;
-				
-				#if PARA
-				KMGecko.pz[LegNum][j] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
-				KMGecko.py[LegNum][j] = i + KMGecko.init_y0[LegNum];
-				i = i + ((Width*1.0)/(STEPNUM1-1));
-				#endif
-				#if PARA_AND_LINE
-				if(Width > 0)
-					if((KMGecko.py[LegNum][j] <= (int)(Width/2)))
-					{
-						KMGecko.pz[LegNum][j] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
-						KMGecko.py[LegNum][j] = i + KMGecko.init_y0[LegNum];
-						i = i + ((Width*1.0)/(STEPNUM1-1))/2;
-					}
-					if(KMGecko.py[LegNum][j] > (int)(Width/2))
-					{
-						
-					}
-					else 
-				#endif
-			}	
-	}
-		if (CycleNum == CYCLE2nd)
-	{
-			for(j = 0;j<DateNum;j++)
-			{
-				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
-				KMGecko.py[LegNum][j+DateNum] = i;
-				KMGecko.pz[LegNum][j+DateNum] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
-				KMGecko.py[LegNum][j+DateNum] = i + KMGecko.init_y0[LegNum];
-				i = i + ((Width*1.0)/(DateNum-1));
-			}	
-	}
-		if (CycleNum == CYCLE3rd)
-	{
-			for(j = 0;j<DateNum;j++)
-			{
-				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
-				KMGecko.py[LegNum][j+2*DateNum] = i;
-				KMGecko.pz[LegNum][j+2*DateNum] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
-				KMGecko.py[LegNum][j+2*DateNum] = i + KMGecko.init_y0[LegNum];
-				i = i + ((Width*1.0)/(DateNum-1));
-			}	
-	}
-		if (CycleNum == CYCLE4th)
-	{
-				for(j = 0;j<DateNum;j++)
-			{
-				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
-				KMGecko.py[LegNum][j+3*DateNum] = i;
-				KMGecko.pz[LegNum][j+3*DateNum] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
-				KMGecko.py[LegNum][j+3*DateNum] = i + KMGecko.init_y0[LegNum];
-				i = i + ((Width*1.0)/(DateNum-1));
-			}	
-		}
-	}
+//void Position_Genarate(float Width,float Hights,int8_t CycleNum,int8_t LegNum)
+//{
+//	float i = 0;
+//	int j = 0;
+//	if (CycleNum == CYCLE1st)
+//	{
+//			for(j = 0;j<STEPNUM;j++)
+//			{
+//				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
+//				KMGecko.py[LegNum][j] = i;
+//				
+//				#if PARA
+//				KMGecko.pz[LegNum][j] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+//				KMGecko.py[LegNum][j] = i + KMGecko.init_y0[LegNum];
+//				i = i + ((Width*1.0)/(STEPNUM1-1));
+//				#endif
+//				#if PARA_AND_LINE
+//				if(Width > 0)
+//					if((KMGecko.py[LegNum][j] <= (int)(Width/2)))
+//					{
+//						KMGecko.pz[LegNum][j] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+//						KMGecko.py[LegNum][j] = i + KMGecko.init_y0[LegNum];
+//						i = i + ((Width*1.0)/(STEPNUM1-1))/2;
+//					}
+//					if(KMGecko.py[LegNum][j] > (int)(Width/2))
+//					{
+//						
+//					}
+//				#endif
+//			}	
+//	}
+//		if (CycleNum == CYCLE2nd)
+//	{
+//			for(j = 0;j<STEPNUM;j++)
+//			{
+//				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
+//				KMGecko.py[LegNum][j+STEPNUM] = i;
+//				KMGecko.pz[LegNum][j+STEPNUM] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+//				KMGecko.py[LegNum][j+STEPNUM] = i + KMGecko.init_y0[LegNum];
+//				i = i + ((Width*1.0)/(STEPNUM-1));
+//			}	
+//	}
+//		if (CycleNum == CYCLE3rd)
+//	{
+//			for(j = 0;j<STEPNUM;j++)
+//			{
+//				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
+//				KMGecko.py[LegNum][j+2*STEPNUM] = i;
+//				KMGecko.pz[LegNum][j+2*STEPNUM] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+//				KMGecko.py[LegNum][j+2*STEPNUM] = i + KMGecko.init_y0[LegNum];
+//				i = i + ((Width*1.0)/(STEPNUM-1));
+//			}	
+//	}
+//		if (CycleNum == CYCLE4th)
+//	{
+//				for(j = 0;j<STEPNUM;j++)
+//			{
+//				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
+//				KMGecko.py[LegNum][j+3*STEPNUM] = i;
+//				KMGecko.pz[LegNum][j+3*STEPNUM] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+//				KMGecko.py[LegNum][j+3*STEPNUM] = i + KMGecko.init_y0[LegNum];
+//				i = i + ((Width*1.0)/(STEPNUM-1));
+//			}	
+//		}
+//	}
 
 /********************************************************************************************************
 *date：2018-10-10
@@ -180,7 +179,14 @@ void Position_Genarate(float Width,float Hights,int8_t CycleNum,int8_t LegNum)
 ********************************************************************************************************/
 void FullStepCycle(void)
 {
-	/**----------RF setted as support leg----------**/
+	/**----------RF setted as swing leg----------**/
+	F0GenerateLine(CYCLE1st,LegRF, LCYCLE1_F4SART,LINEUP);
+	F1GenerateHalfParabolic(WIDTH, HIGHTS, CYCLE1st,LegRF, LSTEPNUM1,LINEUP);
+	F2GenerateHalfTriangle(WIDTH/4, HIGHTS,CYCLE1st,LegRF, LSTEPNUM2,LINEUP);
+	F3GenerateHalfTriangle(WIDTH/4, HIGHTS,CYCLE1st,LegRF, LSTEPNUM3,LINEUP);
+	F4GenerateLine(WIDTH/4,CYCLE1st,LegRF, LSTEPNUM4,LINEUP);
+	
+	
 	Position_Genarate(WIDTH,HIGHTS,CYCLE1st,LegRF);
 	Position_Genarate(-WIDTH/3.0,0,CYCLE1st,LegLF);
 	Position_Genarate(-WIDTH/3.0,0,CYCLE1st,LegLR);
@@ -245,3 +251,490 @@ void StartAngleInit(void)
 	KMGecko.StartAngle[RR_J3] = 0;
 	KMGecko.StartAngle[LR_J3] = 0;
 }
+
+/********************************************************************************************************
+*date：2019-1-23
+*function:generate angle parabolic
+*input:Width ,Hights,LegNum,DataNumber：STEPNUM1,STEPNUM2,STEPNUM3
+*output:角度 
+*author：NUAA google
+*explain:设计此部分为第一部分数据，因此，存储在第一部分
+********************************************************************************************************/
+void F1GenerateHalfParabolic(float Width, float Hights, int8_t CycleNum, int8_t LegNum, uint32_t DataNumber,uint8_t RunMode)
+{
+	
+	float i = 0;
+	int j = 0;
+	if (CycleNum == CYCLE1st)
+	{
+			if(RunMode == LINEUP)
+			{
+				for(j = 0;j<DataNumber;j++)
+				{
+					/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
+					//KMGecko.LineUppy[LegNum][j] = i;
+					KMGecko.LineUppz[LegNum][j] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+					KMGecko.LineUppy[LegNum][j] = i + KMGecko.init_y0[LegNum];
+					i = i + ((Width*1.0)/(DataNumber-1))/2;//半个抛物线，除以2
+				}	
+			}
+			
+	}
+		if (CycleNum == CYCLE2nd)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+CYCLE2_F1SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE2_F1SART] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE2_F1SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1))/2;
+			}
+		}			
+	}
+		if (CycleNum == CYCLE3rd)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+CYCLE3_F1SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE3_F1SART] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE3_F1SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1))/2;
+			}
+		}
+	}
+		if (CycleNum == CYCLE4th)
+	{
+		if(RunMode == LINEUP)
+		{
+				for(j = 0;j<DataNumber;j++)
+			{
+				/**-------抛物线曲线在zy轴上的函数表达式并离散化--------**/
+				KMGecko.py[LegNum][j+LCYCLE4_F1SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE4_F1SART] = (-4.0*Hights*i*i)/(Width*Width) + (4.0*Hights*i/Width) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE4_F1SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1))/2;
+			}
+		}
+		}
+}
+
+/********************************************************************************************************
+*date：2019-1-23
+*function:generate angle triangle
+*input:Width ,Hights,LegNum,CycleNum,LegNum,DataNumber:STEPNUM1,STEPNUM2,STEPNUM3
+*output:角度 
+*author：NUAA google
+*explain：等腰三角型，顶角朝向右.此部分为单端直线。第二个功能函数，DataNumber所定义的数据个数
+********************************************************************************************************/
+void F2GenerateHalfTriangle(float Width, float Hights, int8_t CycleNum, int8_t LegNum, uint32_t DataNumber,uint8_t RunMode)
+{
+	float i = 0;
+	int j = 0;
+	if (CycleNum == CYCLE1st)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------两段直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE1_F2SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE1_F2SART] = (-1.0*Hights*i)/Width + (1.5*Hights) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE1_F2SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));//
+			}
+		}
+			
+	}
+		if (CycleNum == CYCLE2nd)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------两段直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE2_F2SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE2_F2SART] = (-1.0*Hights*i)/Width + (1.5*Hights) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE2_F2SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));
+			}	
+		}
+	}
+		if (CycleNum == CYCLE3rd)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------两段直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE3_F2SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE3_F2SART] = (-1.0*Hights*i)/Width + (1.5*Hights) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE3_F2SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));
+			}
+		}			
+	}
+		if (CycleNum == CYCLE4th)
+	{
+		if(RunMode == LINEUP)
+		{
+				for(j = 0;j<DataNumber;j++)
+			{
+				/**-------两段直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE4_F2SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE4_F2SART] = (-1.0*Hights*i)/Width + (1.5*Hights) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE4_F2SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));
+			}
+		}
+		}
+}
+/********************************************************************************************************
+*date：2019-1-23
+*function:generate angle triangle
+*input:Width ,Hights,LegNum,CycleNum,LegNum,DataNumber:STEPNUM1,STEPNUM2,STEPNUM3
+*output:角度 
+*author：NUAA google
+*explain：等腰三角型，顶角朝向右.此部分为单端直线。第三个功能函数，DataNumber所定义的数据个数
+********************************************************************************************************/
+void F3GenerateHalfTriangle(float Width, float Hights, int8_t CycleNum, int8_t LegNum, uint32_t DataNumber,uint8_t RunMode)
+{
+	float i = 0;
+	int j = 0;
+	if (CycleNum == CYCLE1st)
+	{
+		if(RunMode == LINEUP)
+		{			
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------两段直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE1_F3SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE1_F3SART] = (1.0*Hights*i)/Width - (0.5*Hights) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE1_F3SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));//
+			}
+		}
+			
+	}
+		if (CycleNum == CYCLE2nd)
+	{
+			if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------两段直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE2_F3SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE2_F3SART] = (1.0*Hights*i)/Width - (0.5*Hights) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE2_F3SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));
+			}
+		}			
+	}
+		if (CycleNum == CYCLE3rd)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------两段直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE3_F3SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE3_F3SART] = (1.0*Hights*i)/Width - (0.5*Hights) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE3_F3SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));
+			}
+		}			
+	}
+		if (CycleNum == CYCLE4th)
+	{
+				if(RunMode == LINEUP)
+		{
+				for(j = 0;j<DataNumber;j++)
+			{
+				/**-------两段直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE4_F2SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE4_F3SART] = (1.0*Hights*i)/Width - (0.5*Hights) + KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE4_F3SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));
+			}	
+		}
+		}
+}
+
+/********************************************************************************************************
+*date：2019-1-23
+*function:generate angle triangle
+*input:Width,LegNum,CycleNum,LegNum,DataNumber:STEPNUM1,STEPNUM2,STEPNUM3
+*output:角度 
+*author：NUAA google
+*explain：直线返回函数，第三个功能函数，DataNumber所定义的数据个数
+********************************************************************************************************/
+void F4GenerateLine(float Width, int8_t CycleNum, int8_t LegNum, uint32_t DataNumber, uint8_t RunMode)
+{
+	float i = 0;
+	int j = 0;
+	if (CycleNum == CYCLE1st)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------直线在zy面上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE1_F3SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE1_F4SART] = KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE1_F4SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));//单条直线数据
+			}
+		}			
+	}
+		if (CycleNum == CYCLE2nd)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE2_F4SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE2_F4SART] = (KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE2_F4SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));//单条直线数据
+			}
+		}			
+	}
+		if (CycleNum == CYCLE3rd)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE3_F4SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE3_F4SART] = KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE3_F4SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));//单条直线数据
+			}
+		}			
+	}
+		if (CycleNum == CYCLE4th)
+	{
+		if(RunMode == LINEUP)
+		{
+				for(j = 0;j<DataNumber;j++)
+			{
+				/**-------直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE4_F4SART] = i;
+				KMGecko.pz[LegNum][j+LCYCLE4_F4SART] = KMGecko.init_z0[LegNum];
+				KMGecko.py[LegNum][j+LCYCLE4_F4SART] = i + KMGecko.init_y0[LegNum];
+				i = i + ((Width*1.0)/(DataNumber-1));//单条直线数据
+			}	
+		}
+		}
+}
+
+/********************************************************************************************************
+*date：2019-1-23
+*function:GENERATE INITPosition
+*input:LegNum,CycleNum,LegNum,DataNumber:STEPNUM1+STEPNUM2+STEPNUM3
+*output:角度 
+*author：NUAA google
+*explain：直线返回函数，第三个功能函数，DataNumber所定义的数据个数
+********************************************************************************************************/
+void F0GenerateLine(int8_t CycleNum, int8_t LegNum, uint32_t DataNumber, uint8_t RunMode)
+{
+	int j = 0;
+	if (CycleNum == CYCLE1st)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**---------------**/
+				//KMGecko.py[LegNum][j+LCYCLE1_F3SART] = i;
+				if (LegNum == 0)
+				{
+				KMGecko.pz[1][j] = KMGecko.init_z0[1];
+				KMGecko.py[1][j] = KMGecko.init_y0[1];
+				KMGecko.pz[2][j] = KMGecko.init_z0[2];
+				KMGecko.py[2][j] = KMGecko.init_y0[2];
+				KMGecko.pz[3][j] = KMGecko.init_z0[3];
+				KMGecko.py[3][j] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 1)
+				{
+				KMGecko.pz[0][j] = KMGecko.init_z0[0];
+				KMGecko.py[0][j] = KMGecko.init_y0[0];
+				KMGecko.pz[2][j] = KMGecko.init_z0[2];
+				KMGecko.py[2][j] = KMGecko.init_y0[2];
+				KMGecko.pz[3][j] = KMGecko.init_z0[3];
+				KMGecko.py[3][j] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 2)
+				{
+				KMGecko.pz[1][j] = KMGecko.init_z0[1];
+				KMGecko.py[1][j] = KMGecko.init_y0[1];
+				KMGecko.pz[0][j] = KMGecko.init_z0[0];
+				KMGecko.py[0][j] = KMGecko.init_y0[0];
+				KMGecko.pz[3][j] = KMGecko.init_z0[3];
+				KMGecko.py[3][j] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 3)
+				{
+				KMGecko.pz[1][j] = KMGecko.init_z0[1];
+				KMGecko.py[1][j] = KMGecko.init_y0[1];
+				KMGecko.pz[2][j] = KMGecko.init_z0[2];
+				KMGecko.py[2][j] = KMGecko.init_y0[2];
+				KMGecko.pz[0][j] = KMGecko.init_z0[0];
+				KMGecko.py[0][j] = KMGecko.init_y0[0];
+				}
+			}
+		}			
+	}
+		if (CycleNum == CYCLE2nd)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE2_F4SART] = i;
+				if (LegNum == 0)
+				{
+				KMGecko.pz[1][j+LCYCLE2_F1SART] = KMGecko.init_z0[1];
+				KMGecko.py[1][j+LCYCLE2_F1SART] = KMGecko.init_y0[1];
+				KMGecko.pz[2][j+LCYCLE2_F1SART] = KMGecko.init_z0[2];
+				KMGecko.py[2][j+LCYCLE2_F1SART] = KMGecko.init_y0[2];
+				KMGecko.pz[3][j+LCYCLE2_F1SART] = KMGecko.init_z0[3];
+				KMGecko.py[3][j+LCYCLE2_F1SART] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 1)
+				{
+				KMGecko.pz[0][j+LCYCLE2_F1SART] = KMGecko.init_z0[0];
+				KMGecko.py[0][j+LCYCLE2_F1SART] = KMGecko.init_y0[0];
+				KMGecko.pz[2][j+LCYCLE2_F1SART] = KMGecko.init_z0[2];
+				KMGecko.py[2][j+LCYCLE2_F1SART] = KMGecko.init_y0[2];
+				KMGecko.pz[3][j+LCYCLE2_F1SART] = KMGecko.init_z0[3];
+				KMGecko.py[3][j+LCYCLE2_F1SART] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 2)
+				{
+				KMGecko.pz[1][j+LCYCLE2_F1SART] = KMGecko.init_z0[1];
+				KMGecko.py[1][j+LCYCLE2_F1SART] = KMGecko.init_y0[1];
+				KMGecko.pz[0][j+LCYCLE2_F1SART] = KMGecko.init_z0[0];
+				KMGecko.py[0][j+LCYCLE2_F1SART] = KMGecko.init_y0[0];
+				KMGecko.pz[3][j+LCYCLE2_F1SART] = KMGecko.init_z0[3];
+				KMGecko.py[3][j+LCYCLE2_F1SART] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 3)
+				{
+				KMGecko.pz[1][j+LCYCLE2_F1SART] = KMGecko.init_z0[1];
+				KMGecko.py[1][j+LCYCLE2_F1SART] = KMGecko.init_y0[1];
+				KMGecko.pz[2][j+LCYCLE2_F1SART] = KMGecko.init_z0[2];
+				KMGecko.py[2][j+LCYCLE2_F1SART] = KMGecko.init_y0[2];
+				KMGecko.pz[0][j+LCYCLE2_F1SART] = KMGecko.init_z0[0];
+				KMGecko.py[0][j+LCYCLE2_F1SART] = KMGecko.init_y0[0];
+				}
+			}
+		}			
+	}
+		if (CycleNum == CYCLE3rd)
+	{
+		if(RunMode == LINEUP)
+		{
+			for(j = 0;j<DataNumber;j++)
+			{
+				/**-------直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE3_F4SART] = i;
+				if (LegNum == 0)
+				{
+				KMGecko.pz[1][j+LCYCLE3_F1SART] = KMGecko.init_z0[1];
+				KMGecko.py[1][j+LCYCLE3_F1SART] = KMGecko.init_y0[1];
+				KMGecko.pz[2][j+LCYCLE3_F1SART] = KMGecko.init_z0[2];
+				KMGecko.py[2][j+LCYCLE3_F1SART] = KMGecko.init_y0[2];
+				KMGecko.pz[3][j+LCYCLE3_F1SART] = KMGecko.init_z0[3];
+				KMGecko.py[3][j+LCYCLE3_F1SART] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 1)
+				{
+				KMGecko.pz[0][j+LCYCLE3_F1SART] = KMGecko.init_z0[0];
+				KMGecko.py[0][j+LCYCLE3_F1SART] = KMGecko.init_y0[0];
+				KMGecko.pz[2][j+LCYCLE3_F1SART] = KMGecko.init_z0[2];
+				KMGecko.py[2][j+LCYCLE3_F1SART] = KMGecko.init_y0[2];
+				KMGecko.pz[3][j+LCYCLE3_F1SART] = KMGecko.init_z0[3];
+				KMGecko.py[3][j+LCYCLE3_F1SART] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 2)
+				{
+				KMGecko.pz[1][j+LCYCLE3_F1SART] = KMGecko.init_z0[1];
+				KMGecko.py[1][j+LCYCLE3_F1SART] = KMGecko.init_y0[1];
+				KMGecko.pz[0][j+LCYCLE3_F1SART] = KMGecko.init_z0[0];
+				KMGecko.py[0][j+LCYCLE3_F1SART] = KMGecko.init_y0[0];
+				KMGecko.pz[3][j+LCYCLE3_F1SART] = KMGecko.init_z0[3];
+				KMGecko.py[3][j+LCYCLE3_F1SART] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 3)
+				{
+				KMGecko.pz[1][j+LCYCLE3_F1SART] = KMGecko.init_z0[1];
+				KMGecko.py[1][j+LCYCLE3_F1SART] = KMGecko.init_y0[1];
+				KMGecko.pz[2][j+LCYCLE3_F1SART] = KMGecko.init_z0[2];
+				KMGecko.py[2][j+LCYCLE3_F1SART] = KMGecko.init_y0[2];
+				KMGecko.pz[0][j+LCYCLE3_F1SART] = KMGecko.init_z0[0];
+				KMGecko.py[0][j+LCYCLE3_F1SART] = KMGecko.init_y0[0];
+				}
+			}
+		}			
+	}
+		if (CycleNum == CYCLE4th)
+	{
+		if(RunMode == LINEUP)
+		{
+				for(j = 0;j<DataNumber;j++)
+			{
+				/**-------直线在zy轴上的函数表达式并离散化--------**/
+				//KMGecko.py[LegNum][j+LCYCLE4_F4SART] = i;
+				if (LegNum == 0)
+				{
+				KMGecko.pz[1][j+LCYCLE4_F1SART] = KMGecko.init_z0[1];
+				KMGecko.py[1][j+LCYCLE4_F1SART] = KMGecko.init_y0[1];
+				KMGecko.pz[2][j+LCYCLE4_F1SART] = KMGecko.init_z0[2];
+				KMGecko.py[2][j+LCYCLE4_F1SART] = KMGecko.init_y0[2];
+				KMGecko.pz[3][j+LCYCLE4_F1SART] = KMGecko.init_z0[3];
+				KMGecko.py[3][j+LCYCLE4_F1SART] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 1)
+				{
+				KMGecko.pz[0][j+LCYCLE4_F1SART] = KMGecko.init_z0[0];
+				KMGecko.py[0][j+LCYCLE4_F1SART] = KMGecko.init_y0[0];
+				KMGecko.pz[2][j+LCYCLE4_F1SART] = KMGecko.init_z0[2];
+				KMGecko.py[2][j+LCYCLE4_F1SART] = KMGecko.init_y0[2];
+				KMGecko.pz[3][j+LCYCLE4_F1SART] = KMGecko.init_z0[3];
+				KMGecko.py[3][j+LCYCLE4_F1SART] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 2)
+				{
+				KMGecko.pz[1][j+LCYCLE4_F1SART] = KMGecko.init_z0[1];
+				KMGecko.py[1][j+LCYCLE4_F1SART] = KMGecko.init_y0[1];
+				KMGecko.pz[0][j+LCYCLE4_F1SART] = KMGecko.init_z0[0];
+				KMGecko.py[0][j+LCYCLE4_F1SART] = KMGecko.init_y0[0];
+				KMGecko.pz[3][j+LCYCLE4_F1SART] = KMGecko.init_z0[3];
+				KMGecko.py[3][j+LCYCLE4_F1SART] = KMGecko.init_y0[3];
+				}
+				if (LegNum == 3)
+				{
+				KMGecko.pz[1][j+LCYCLE4_F1SART] = KMGecko.init_z0[1];
+				KMGecko.py[1][j+LCYCLE4_F1SART] = KMGecko.init_y0[1];
+				KMGecko.pz[2][j+LCYCLE4_F1SART] = KMGecko.init_z0[2];
+				KMGecko.py[2][j+LCYCLE4_F1SART] = KMGecko.init_y0[2];
+				KMGecko.pz[0][j+LCYCLE4_F1SART] = KMGecko.init_z0[0];
+				KMGecko.py[0][j+LCYCLE4_F1SART] = KMGecko.init_y0[0];
+				}
+			}	
+		}
+		}
+}
+
+
+
