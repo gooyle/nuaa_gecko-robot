@@ -27,7 +27,7 @@
 #define TSTEPNUM3 100//转弯功能3的步数
 
 
-#define LTOTALSTEPS 4*(LSTEPNUM1+LSTEPNUM2+LSTEPNUM3+LSTEPNUM4) //一个循环内三个功能的总步数
+#define LTOTALSTEPS 940 //一个循环内三个功能的总步数
 #define TTOTALSTEPS 4*(LSTEPNUM1+LSTEPNUM2+LSTEPNUM3)
 /*****-----直线部分------*****/
 #define LCYCLE1_F1SART 0
@@ -82,14 +82,14 @@
 #define LegLR 3
 typedef struct Kinematics
 {
-	int32_t LineUptheta1[LEGNUM][LTOTALSTEPS];
-	int32_t LineUptheta2[LEGNUM][LTOTALSTEPS];
-	int32_t LineUptheta3[LEGNUM][LTOTALSTEPS];
-	
+//	int32_t LineUptheta1[LEGNUM][LTOTALSTEPS];
+//	int32_t LineUptheta2[LEGNUM][LTOTALSTEPS];
+//	int32_t LineUptheta3[LEGNUM][LTOTALSTEPS];
+//	
 //	int32_t LineBacktheta1[LEGNUM][LTOTALSTEPS];
 //	int32_t LineBacktheta2[LEGNUM][LTOTALSTEPS];
 //	int32_t LineBacktheta3[LEGNUM][LTOTALSTEPS];
-	
+//	
 //	int32_t TurnLefttheta1[LEGNUM][4*STEPNUM];
 //	int32_t TurnLefttheta2[LEGNUM][4*STEPNUM];
 //	int32_t TurnLefttheta3[LEGNUM][4*STEPNUM];
@@ -104,7 +104,7 @@ typedef struct Kinematics
 	float LineUppx[LEGNUM][LTOTALSTEPS];
 	float LineUppy[LEGNUM][LTOTALSTEPS];
 	float LineUppz[LEGNUM][LTOTALSTEPS];  
-	uint32_t StartAngle[JonintNum];
+	float StartAngle[JonintNum];
 	uint32_t StepNum;//数据步距
 }KinematicsArm;
 
